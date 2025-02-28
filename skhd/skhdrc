@@ -1,4 +1,4 @@
 cmd - return : open -a 'Alacritty'
-cmd + shift - v : open -a 'Vivaldi'
-cmd + shift - o : open -a 'Obsidian'
-cmd + shift - g : open -a 'ChatGPT'
+alt - b : open -a 'Vivaldi'
+alt - o : open -a 'Obsidian'
+alt - g : open -a 'ChatGPT'
