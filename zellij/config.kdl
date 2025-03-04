@@ -3,6 +3,17 @@
 //
 
 keybinds clear-defaults=true {
+    normal {
+    // bind F1 to open monocle in a new floating pane and open any results in a new tiled/floating pane
+    bind "Alt m" {
+      LaunchPlugin "file:~/.config/zellij/plugins/monocle.wasm" {
+        in_place true
+        kiosk true
+      };
+      SwitchToMode "Normal"
+    }
+
+  }
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }
     }
@@ -243,17 +254,18 @@ keybinds clear-defaults=true {
 // Plugin aliases - can be used to change the implementation of Zellij
 // changing these requires a restart to take effect
 plugins {
-    compact-bar location="zellij:compact-bar"
-    configuration location="zellij:configuration"
-    filepicker location="zellij:strider" {
-        cwd "/"
-    }
-    plugin-manager location="zellij:plugin-manager"
-    session-manager location="zellij:session-manager"
-    status-bar location="zellij:status-bar"
-    strider location="zellij:strider"
-    tab-bar location="zellij:tab-bar"
-    welcome-screen location="zellij:session-manager" 
+  compact-bar location="zellij:compact-bar"
+  configuration location="zellij:configuration"
+  filepicker location="zellij:strider" {
+    cwd "/"
+  }
+  plugin-manager location="zellij:plugin-manager"
+  session-manager location="zellij:session-manager"
+  status-bar location="zellij:status-bar"
+  strider location="zellij:strider"
+  tab-bar location="zellij:tab-bar"
+  welcome-screen location="zellij:session-manager" 
+  monocle location="file:~/.config/zellij/plugins/monocle.wasm" 
 }
 
 // Plugins to load in the background when a new session starts
