@@ -6,53 +6,59 @@ layout {
     pane size=1 borderless=true {
         borderless true
         plugin location="file:/Users/brianseo/.config/zellij/plugins/zjstatus.wasm" {
-            format_left   "{mode} #[bg=#1E1E2E]{tabs} "
-            format_right "🦇 BATMAN {command_conky}#[fg=#9c86bf,bg=#DCD7BA]{datetime}"
-            format_center  "#[bg=#1E1E2E,fg=#89b4fa] {session}"
-            format_space  "#[bg=#1E1E2E]"
+            format_left   "{mode}#[bg=#151E1E] {tabs}"
+            format_center ""
+            format_right  "#[bg=#151E1E,fg=#E8E9E9]#[bg=#89b4fa,fg=#151E1E,bold] #[bg=#363a4f,fg=#E8E9E9,bold] {session} #[bg=#151E1E,fg=#363a4f,bold]"
+            format_space  ""
+            format_hide_on_overlength "true"
+            format_precedence "crl"
 
+            border_enabled  "false"
+            border_char     "─"
+            border_format   "#[fg=#E8E9E9]{char}"
+            border_position "top"
 
-            mode_normal        "#[bg=#89b4fa,fg=#1E1E2E]  #[bg=#1E1E2E,fg=#89b4fa]█"
-            mode_locked        "#[bg=#6e738d,fg=#1E1E2E]  #[bg=#1E1E2E,fg=#6e738d]█"
-            mode_resize        "#[bg=#f38ba8,fg=#1E1E2E]  #[bg=#1E1E2E,fg=#f38ba8]█"
-            mode_pane          "#[bg=#89b4fa,fg=#1E1E2E]  #[bg=#1E1E2E,fg=#89b4fa]█"
-            mode_tab           "#[bg=#b4befe,fg=#1E1E2E]  #[bg=#1E1E2E,fg=#b4befe]█"
-            mode_scroll        "#[bg=#f9e2af,fg=#1E1E2E] scroll#[bg=#1E1E2E,fg=#f9e2af]█"
-            mode_enter_search  "#[bg=#8aadf4,fg=#1E1E2E] ent-search#[bg=#1E1E2E,fg=#8aadf4]█"
-            mode_search        "#[bg=#8aadf4,fg=#1E1E2E] SEARCH#[bg=#1E1E2E,fg=#8aadf4]█"
-            mode_rename_tab    "#[bg=#b4befe,fg=#1E1E2E] rename-tab#[bg=#1E1E2E,fg=#b4befe]█"
-            mode_rename_pane   "#[bg=#89b4fa,fg=#1E1E2E] rename-pane#[bg=#1E1E2E,fg=#89b4fa]█"
-            mode_session       "#[bg=#74c7ec,fg=#1E1E2E] session#[bg=#1E1E2E,fg=#74c7ec]█"
-            mode_move          "#[bg=#f5c2e7,fg=#1E1E2E] move#[bg=#1E1E2E,fg=#f5c2e7]█"
-            mode_prompt        "#[bg=#8aadf4,fg=#1E1E2E] prompt#[bg=#1E1E2E,fg=#8aadf4]█"
-            mode_tmux          "#[bg=#f5a97f,fg=#1E1E2E]  #[bg=#1E1E2E,fg=#f5a97f]█"
+            // Mode-specific styles with bright backgrounds use #FFFFFF for contrast
+            mode_normal        "#[bg=#a6da95,fg=#FFFFFF,bold] NORMAL#[bg=#151E1E,fg=#a6da95]█"
+            mode_locked        "#[bg=#6e738d,fg=#FFFFFF,bold] LOCKED #[bg=#151E1E,fg=#6e738d]█"
+            mode_resize        "#[bg=#f38ba8,fg=#FFFFFF,bold] RESIZE#[bg=#151E1E,fg=#f38ba8]█"
+            mode_pane          "#[bg=#89b4fa,fg=#FFFFFF,bold] PANE#[bg=#151E1E,fg=#89b4fa]█"
+            mode_tab           "#[bg=#b4befe,fg=#FFFFFF,bold] TAB#[bg=#151E1E,fg=#b4befe]█"
+            mode_scroll        "#[bg=#f9e2af,fg=#FFFFFF,bold] SCROLL#[bg=#151E1E,fg=#f9e2af]█"
+            mode_enter_search  "#[bg=#8aadf4,fg=#FFFFFF,bold] ENT-SEARCH#[bg=#151E1E,fg=#8aadf4]█"
+            mode_search        "#[bg=#8aadf4,fg=#FFFFFF,bold] SEARCHARCH#[bg=#151E1E,fg=#8aadf4]█"
+            mode_rename_tab    "#[bg=#b4befe,fg=#FFFFFF,bold] RENAME-TAB#[bg=#151E1E,fg=#b4befe]█"
+            mode_rename_pane   "#[bg=#89b4fa,fg=#FFFFFF,bold] RENAME-PANE#[bg=#151E1E,fg=#89b4fa]█"
+            mode_session       "#[bg=#74c7ec,fg=#FFFFFF,bold] SESSION#[bg=#151E1E,fg=#74c7ec]█"
+            mode_move          "#[bg=#f5c2e7,fg=#FFFFFF,bold] MOVE#[bg=#151E1E,fg=#f5c2e7]█"
+            mode_prompt        "#[bg=#8aadf4,fg=#FFFFFF,bold] PROMPT#[bg=#151E1E,fg=#8aadf4]█"
+            mode_tmux          "#[bg=#f5a97f,fg=#FFFFFF,bold] TMUX#[bg=#151E1E,fg=#f5a97f]█"
 
-            tab_normal              "#[bg=#1E1E2E,fg=#6C7086]{index}.{name}{floating_indicator}"
-            tab_active              "#[bg=#1E1E2E,fg=#89b4fa]{index}.{name}{fullscreen_indicator}{sync_indicator}{floating_indicator}"
-            tab_floating_indicator   "󰉈 "
-            tab_fullscreen_indicator " 󰊓 "
-            tab_separator           "#[fg=#6C7086] ⋮ "
-            tab_sync_indicator       "  "
+            // Tab styles with updated background and foreground
+            tab_normal              "#[bg=#151E1E,fg=#E8E9E9]█#[bg=#89b4fa,fg=#151E1E,bold]{index} #[bg=#363a4f,fg=#E8E9E9,bold] {name}{floating_indicator}#[bg=#151E1E,fg=#363a4f,bold]█"
+            tab_normal_fullscreen   "#[bg=#151E1E,fg=#E8E9E9]█#[bg=#89b4fa,fg=#151E1E,bold]{index} #[bg=#363a4f,fg=#E8E9E9,bold] {name}{fullscreen_indicator}#[bg=#151E1E,fg=#363a4f,bold]█"
+            tab_normal_sync         "#[bg=#151E1E,fg=#E8E9E9]█#[bg=#89b4fa,fg=#151E1E,bold]{index} #[bg=#363a4f,fg=#E8E9E9,bold] {name}{sync_indicator}#[bg=#151E1E,fg=#363a4f,bold]█"
 
+            tab_active              "#[bg=#151E1E,fg=#E8E9E9]█#[bg=#fab387,fg=#151E1E,bold]{index} #[bg=#363a4f,fg=#E8E9E9,bold] {name}{floating_indicator}#[bg=#151E1E,fg=#363a4f,bold]█"
+            tab_active_fullscreen   "#[bg=#151E1E,fg=#E8E9E9]█#[bg=#fab387,fg=#151E1E,bold]{index} #[bg=#363a4f,fg=#E8E9E9,bold] {name}{fullscreen_indicator}#[bg=#151E1E,fg=#363a4f,bold]█"
+            tab_active_sync         "#[bg=#151E1E,fg=#E8E9E9]█#[bg=#fab387,fg=#151E1E,bold]{index} #[bg=#363a4f,fg=#E8E9E9,bold] {name}{sync_indicator}#[bg=#151E1E,fg=#363a4f,bold]█"
 
-            hide_frame_for_single_pane "true"
+            // Separator with updated background
+            tab_separator           "#[bg=#151E1E] "
 
-            tab_normal              "#[fg=#181825,bg=#4C4C59] #[fg=#000000,bg=#4C4C59]{index} {name} #[fg=#4C4C59,bg=#181825]"
-            tab_normal_fullscreen   "#[fg=#6C7086,bg=#181825] {index} {name} [] "
-            tab_normal_sync         "#[fg=#6C7086,bg=#181825] {index} {name} <> "
-            tab_active              "#[fg=#181825,bg=#ffffff,bold,italic]{index} {name} #[fg=#ffffff,bg=#181825]"
-            tab_active_fullscreen   "#[fg=#9399B2,bg=#181825,bold,italic] {index} {name} [] "
-            tab_active_sync         "#[fg=#9399B2,bg=#181825,bold,italic] {index} {name} <> "
+            // Indicators (icons remain unchanged)
+            tab_sync_indicator       " "
+            tab_fullscreen_indicator " 󰊓"
+            tab_floating_indicator   " 󰹙"
 
-            // TODO: set this path correctly to the absolute path to the conky.conf
-            command_conky_command  "conky -i1 -c /Users/brianseo/.config/zellij/conf/conky.conf"
-            command_conky_format   "{stdout}"
-            command_conky_interval "1"
+            command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+            command_git_branch_format      "#[fg=#E8E9E9] {stdout} "
+            command_git_branch_interval    "10"
+            command_git_branch_rendermode  "static"
 
-            datetime          "#[fg=#000000,bg=#DCD7BA,nobold]{format}"
-            datetime_format   "%d/%m %H:%M"
-            datetime_timezone "Asia/Seoul"
-
+            datetime        "#[fg=#E8E9E9,bold] {format} "
+            datetime_format "%A, %d %b %Y %H:%M"
+            datetime_timezone "Europe/London"
         }
     }
 }
