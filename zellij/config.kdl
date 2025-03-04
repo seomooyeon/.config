@@ -253,21 +253,13 @@ plugins {
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     tab-bar location="zellij:tab-bar"
-    welcome-screen location="zellij:session-manager" {
-        welcome_screen true
-    }
+    welcome-screen location="zellij:session-manager" 
 }
 
 // Plugins to load in the background when a new session starts
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
-load_plugins {
-  "https://github.com/dj95/zjstatus/releases/latest/download/zjframes.wasm" {
-        hide_frame_for_single_pane       "false"
-        hide_frame_except_for_search     "true"
-        hide_frame_except_for_fullscreen "true"
-    }
-}
+load_plugins {}
  
 // Use a simplified UI without special fonts (arrow glyphs)
 // Options:
