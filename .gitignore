@@ -13,3 +13,5 @@ configstore/update-notifier-@thirdweb-dev
 crossnote
 gh
 neonctl
+zed/conversations/*
+zed/prompts/*
