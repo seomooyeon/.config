@@ -15,6 +15,19 @@
     }
   },
   {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "space g g": [
+        "task::Spawn",
+        {
+          "task_name": "lazygit",
+          "target": "center",
+          "reveal_target": "center"
+        }
+      ]
+    }
+  },
+  {
     // This lets you navigate between different panes with cmd + 1, cmd + 2, etc.
     "context": "Pane",
     "bindings": {
@@ -78,6 +91,23 @@
       "alt-cmd-]": "editor::UnfoldLines",
       "ctrl-space": "editor::ShowCompletions",
       "cmd-.": "editor::ToggleCodeActions"
+    }
+  },
+  {
+    // Vim: File Tree ("ProjectPanel") actions
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "h": "project_panel::CollapseSelectedEntry",
+      "l": "project_panel::ExpandSelectedEntry",
+      "o": "menu::Confirm",
+      "r": "project_panel::Rename",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "d": "project_panel::Delete",
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "g y": "workspace::CopyPath"
     }
   }
 ]
