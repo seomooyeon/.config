@@ -7,20 +7,11 @@
       "space l a": "editor::ToggleCodeActions",
       "space l r": "editor::Rename",
       "space l f": "editor::Format",
-      "space l l": "diagnostics::Deploy",
-      "g c c": "editor::ToggleComments",
       "space f f": "file_finder::Toggle",
       "space o": "tab_switcher::Toggle",
       "space e": "workspace::ToggleLeftDock",
       "space p": "outline::Toggle",
       "space v": "editor::GoToDefinitionSplit"
-    }
-  },
-  {
-    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
-    "bindings": {
-      "shift-j": "editor::MoveLineDown",
-      "shift-k": "editor::MoveLineUp"
     }
   },
   {
@@ -43,10 +34,6 @@
     "bindings": {
       "cmd-[": "editor::Outdent",
       "cmd-]": "editor::Indent",
-      "cmd-alt-up": "editor::AddSelectionAbove",
-      "cmd-alt-down": "editor::AddSelectionBelow",
-      "cmd-ctrl-p": "editor::AddSelectionAbove",
-      "cmd-ctrl-n": "editor::AddSelectionBelow",
       "cmd-d": [
         "editor::SelectNext",
         {
@@ -82,7 +69,6 @@
       "cmd-u": "editor::UndoSelection",
       "cmd-shift-u": "editor::RedoSelection",
       "f2": "editor::Rename",
-      "gd": "editor::GoToDefinition",
       "alt-f12": "editor::GoToDefinitionSplit",
       "cmd-f12": "editor::GoToTypeDefinition",
       "alt-cmd-f12": "editor::GoToTypeDefinitionSplit",
