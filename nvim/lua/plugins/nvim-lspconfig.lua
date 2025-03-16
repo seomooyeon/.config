@@ -17,14 +17,19 @@ return {
 
     -- Useful status updates for LSP
     -- https://github.com/j-hui/fidget.nvim
-    { 'j-hui/fidget.nvim',                        opts = {} },
+    { 'j-hui/fidget.nvim', opts = {} },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     -- https://github.com/folke/neodev.nvim
-    { 'folke/neodev.nvim',                        opts = {} },
+    { 'folke/neodev.nvim', opts = {} },
   },
   config = function()
-    require('mason').setup()
+    require('mason').setup({
+      registries = {
+        'github:nvim-java/mason-registry',
+        "github:mason-org/mason-registry",
+      },
+    })
     require('mason-lspconfig').setup({
       -- Install these LSPs automatically
       ensure_installed = {
@@ -39,15 +44,16 @@ return {
         'marksman',
         'quick_lint_js',
         'yamlls',
+        'gradle_ls',
       }
     })
 
     require('mason-tool-installer').setup({
       -- Install these linters, formatters, debuggers automatically
       ensure_installed = {
-        -- 'java-debug-adapter',
-        -- 'java-test',
-        'stylelua',
+        'java-debug-adapter',
+        'java-test',
+        'stylua',
         'google-java-format',
       },
     })
