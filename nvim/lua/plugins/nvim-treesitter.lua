@@ -15,11 +15,13 @@ return {
 			"yaml",
 			"html",
 			"css",
+			"gitignore",
 		},
 		sync_install = false,
 		highlight = { enable = true },
 		indent = { enable = true },
 		auto_install = true,
+		autotag = { enable = true },
 	},
 	config = function(_, opts)
 		local configs = require("nvim-treesitter.configs")
