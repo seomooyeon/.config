@@ -38,7 +38,7 @@ local config = {
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
 		"-Dlog.protocol=true",
 		"-Dlog.level=ALL",
-		"-javaagent:" .. home .. "/.local/share/nvim/mason/share/jdtls/lombok.jar",
+		"-javaagent:" .. home .. "/.config/nvim/lombok.jar",
 		"-Xmx4g",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
@@ -73,22 +73,10 @@ local config = {
 				-- TODO Update this by adding any runtimes that you need to support your Java projects and removing any that you don't have installed
 				-- The runtimes' name parameter needs to match a specific Java execution environments.  See https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request and search "ExecutionEnvironment".
 				runtimes = {
-					-- {
-					--   name = "JavaSE-1.8",
-					--   path = "/usr/lib/jvm/java-8-openjdk-amd64",
-					-- },
-					-- {
-					--   name = "JavaSE-11",
-					--   path = "/usr/lib/jvm/java-11-openjdk-amd64",
-					-- },
 					{
 						name = "JavaSE-17",
 						path = "/Library/Java/JavaVirtualMachines/corretto-17.0.12/Contents/Home",
 					},
-					-- {
-					--   name = "JavaSE-19",
-					--   path = "/usr/lib/jvm/java-19-openjdk-amd64",
-					-- },
 					{
 						name = "JavaSE-21",
 						path = "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home",
