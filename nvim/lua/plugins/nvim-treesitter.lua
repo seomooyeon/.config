@@ -2,6 +2,7 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	opts = {
 		ensure_installed = {
+			"java",
 			"bash",
 			"lua",
 			"luadoc",
@@ -9,7 +10,6 @@ return {
 			"markdown_inline",
 			"vim",
 			"vimdoc",
-			"java",
 			"json",
 			"javascript",
 			"yaml",
