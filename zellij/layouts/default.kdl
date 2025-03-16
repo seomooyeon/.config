@@ -1,5 +1,5 @@
 layout {
-  tab name="Your mind must be stronger than your feelings." hide_floating_panes=true {
+  tab name="No man is free who is not master of himself." hide_floating_panes=true {
     pane {
       name "CODE"
       focus true

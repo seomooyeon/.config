@@ -41,6 +41,8 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = true
 
+vim.opt.swapfile = false
+
 -- kickstart
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -70,7 +72,7 @@ vim.opt.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
+	vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Enable break indent
