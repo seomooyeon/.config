@@ -31,7 +31,7 @@ return {
         'bashls',
         'cssls',
         'html',
-        'gradle_ls',
+        'graddle-language-server',
         'groovyls',
         'lua_ls',
         'jdtls',
