@@ -1,5 +1,10 @@
 return {
 	"folke/snacks.nvim",
+	dependencies = {
+		"ibhagwan/fzf-lua",
+		"nvim-tree/nvim-web-devicons",
+		"echasnovski/mini.icons",
+	},
 	priority = 1000,
 	lazy = false,
 	opts = {
