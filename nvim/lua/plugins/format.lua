@@ -13,7 +13,7 @@ return {
         scss = { "prettier" },
         html = { "prettier" },
         json = { "prettier" },
-        lua = { "luaformatter" },
+        lua = { "stylelua" },
         python = { "isort", "black" },
         java = { "google-java-format" },
       },

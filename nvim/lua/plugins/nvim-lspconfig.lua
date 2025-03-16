@@ -47,7 +47,7 @@ return {
       ensure_installed = {
         -- 'java-debug-adapter',
         -- 'java-test',
-        'luaformatter',
+        'stylelua',
         'google-java-format',
       },
     })
