@@ -168,6 +168,10 @@ keybinds clear-defaults=true {
         bind "Alt j" { MoveFocus "down"; }
         bind "Alt k" { MoveFocus "up"; }
         bind "Alt l" { MoveFocusOrTab "right"; }
+        bind "˙" { MoveFocusOrTab "left"; }
+        bind "∆" { MoveFocus "down"; }
+        bind "˚" { MoveFocus "up"; }
+        bind "¬" { MoveFocusOrTab "right"; }
     }
     shared_except "locked" "scroll" "search" "tmux" {
         bind "Ctrl b" { SwitchToMode "tmux"; }
