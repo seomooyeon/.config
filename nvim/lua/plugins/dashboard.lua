@@ -34,15 +34,16 @@ Y8,          i8'    ,8I  I8   8I   8I   8I I8   8I   8I   8I   88   ,I8,
 					{
 						icon = " ",
 						key = "g",
+						action = ":lua Snacks.dashboard.pick('live_grep')",
 						desc = "Find Text",
-						action = ":lua Snacks.picker.grep()",
 					},
 					{
 						icon = " ",
 						key = "r",
 						desc = "Recent Files",
-						action = ":lua Snacks.picker.recent()",
+						action = ":lua Snacks.dashboard.pick('oldfiles')",
 					},
+					{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
 					{
 						icon = " ",
 						key = "c",
