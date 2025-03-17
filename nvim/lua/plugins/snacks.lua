@@ -41,14 +41,14 @@ return {
 		{
 			"<leader>,",
 			function()
-				Snacks.picker.buffers()
+				require("fzf-lua").buffers()
 			end,
 			desc = "Buffers",
 		},
 		{
 			"<leader>:",
 			function()
-				Snacks.picker.command_history()
+				require("fzf-lua").command_history()
 			end,
 			desc = "Command History",
 		},
@@ -70,7 +70,7 @@ return {
 		{
 			"<leader>fb",
 			function()
-				Snacks.picker.buffers()
+				require("fzf-lua").buffers()
 			end,
 			desc = "Buffers",
 		},
@@ -84,14 +84,14 @@ return {
 		{
 			"<leader>fc",
 			function()
-				require("fzf-lua").files({ cwd = "~/.config" })
+				require("fzf-lua").files({ cwd = "~/.config/nvim/" })
 			end,
 			desc = "Find Config File",
 		},
 		{
 			"<leader>fg",
 			function()
-				Snacks.picker.git_files()
+				require("fzf-lua").git_files()
 			end,
 			desc = "Find Git Files",
 		},
@@ -105,7 +105,7 @@ return {
 		{
 			"<leader>fr",
 			function()
-				Snacks.picker.recent()
+				require("fzf-lua").oldfiles()
 			end,
 			desc = "Recent",
 		},
@@ -113,14 +113,14 @@ return {
 		{
 			"<leader>gb",
 			function()
-				Snacks.picker.git_branches()
+				require("fzf-lua").git_branches()
 			end,
 			desc = "Git Branches",
 		},
 		{
 			"<leader>gl",
 			function()
-				Snacks.picker.git_log()
+				require("fzf-lua").git_commits()
 			end,
 			desc = "Git Log",
 		},
