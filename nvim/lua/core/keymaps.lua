@@ -40,9 +40,6 @@ keymap.set("n", "<leader>qp", ":cprev<CR>")  -- jump to prev quickfix list item
 keymap.set("n", "<leader>ql", ":clast<CR>")  -- jump to last quickfix list item
 keymap.set("n", "<leader>qc", ":cclose<CR>") -- close quickfix list
 
--- Vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
-
 -- Harpoon
 keymap.set("n", "<leader>ha", require("harpoon.mark").add_file)
 keymap.set("n", "<leader>hh", require("harpoon.ui").toggle_quick_menu)
@@ -125,7 +122,6 @@ keymap.set("n", "<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
 keymap.set("n", "<leader>bc", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>")
 keymap.set("n", "<leader>bl", "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>")
 keymap.set("n", "<leader>br", "<cmd>lua require'dap'.clear_breakpoints()<cr>")
-keymap.set("n", "<leader>ba", "<cmd>lua require('fzf-lua').dap_breakpoints()<cr>")
 keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>")
 keymap.set("n", "<leader>dj", "<cmd>lua require'dap'.step_over()<cr>")
 keymap.set("n", "<leader>dk", "<cmd>lua require'dap'.step_into()<cr>")
@@ -147,8 +143,6 @@ keymap.set("n", "<leader>d?", function()
   local widgets = require("dap.ui.widgets")
   widgets.centered_float(widgets.scopes)
 end)
-keymap.set("n", "<leader>df", "<cmd>lua require('fzf-lua').dap_frames()<cr>")
-keymap.set("n", "<leader>dh", "<cmd>lua require('fzf-lua').dap_commands()<cr>")
-keymap.set("n", "<leader>de", function()
-  require("telescope.builtin").diagnostics({ default_text = ":E:" })
-end)
+-- keymap.set("n", "<leader>ba", "<cmd>lua require('fzf-lua').dap_breakpoints()<cr>")
+-- keymap.set("n", "<leader>df", "<cmd>lua require('fzf-lua').dap_frames()<cr>")
+-- keymap.set("n", "<leader>dh", "<cmd>lua require('fzf-lua').dap_commands()<cr>")
