@@ -29,7 +29,7 @@ Y8,         i8'    ,8I I8   8I   8I   8I I8   8I   8I   8I  88  ,I8,
                                                                       
       ]],
 				keys = {
-					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+					{ icon = " ", key = "f", desc = "Find File", action = ":lua require('fzf-lua').files()" },
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
 					{
 						icon = " ",
@@ -47,7 +47,7 @@ Y8,         i8'    ,8I I8   8I   8I   8I I8   8I   8I   8I  88  ,I8,
 						icon = " ",
 						key = "c",
 						desc = "Config",
-						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+						action = ":FzfLua files cwd=~/.config/nvim/",
 					},
 					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 				},
