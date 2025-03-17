@@ -46,13 +46,6 @@ return {
 			desc = "Buffers",
 		},
 		{
-			"<leader>/",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "Grep",
-		},
-		{
 			"<leader>:",
 			function()
 				Snacks.picker.command_history()
@@ -184,7 +177,7 @@ return {
 		{
 			"<leader>sg",
 			function()
-				Snacks.picker.grep()
+				require("fzf-lua").live_grep()
 			end,
 			desc = "Grep",
 		},
