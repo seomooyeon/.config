@@ -9,7 +9,7 @@ return {
     -- https://github.com/nvim-neotest/nvim-nio
     'nvim-neotest/nvim-nio',
     -- https://github.com/theHamsta/nvim-dap-virtual-text
-    'theHamsta/nvim-dap-virtual-text', -- inline variable text while debugging
+    'theHamsta/nvim-dap-virtual-text',   -- inline variable text while debugging
     -- https://github.com/nvim-telescope/telescope-dap.nvim
     'nvim-telescope/telescope-dap.nvim', -- telescope integration with dap
   },
@@ -88,18 +88,18 @@ return {
       max_value_lines = 100
     }
   },
-  config = function (_, opts)
+  config = function(_, opts)
     local dap = require('dap')
     require('dapui').setup(opts)
 
     -- Customize breakpoint signs
     vim.api.nvim_set_hl(0, "DapStoppedHl", { fg = "#98BB6C", bg = "#2A2A2A", bold = true })
     vim.api.nvim_set_hl(0, "DapStoppedLineHl", { bg = "#204028", bold = true })
-    vim.fn.sign_define('DapStopped', { text='', texthl='DapStoppedHl', linehl='DapStoppedLineHl', numhl= '' })
-    vim.fn.sign_define('DapBreakpoint', { text='', texthl='DiagnosticSignError', linehl='', numhl='' })
-    vim.fn.sign_define('DapBreakpointCondition', { text='', texthl='DiagnosticSignWarn', linehl='', numhl='' })
-    vim.fn.sign_define('DapBreakpointRejected', { text='', texthl='DiagnosticSignError', linehl='', numhl= '' })
-    vim.fn.sign_define('DapLogPoint', { text='', texthl='DiagnosticSignInfo', linehl='', numhl= '' })
+    vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStoppedHl', linehl = 'DapStoppedLineHl', numhl = '' })
+    vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl = 'DiagnosticSignWarn', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DiagnosticSignInfo', linehl = '', numhl = '' })
 
     dap.listeners.after.event_initialized["dapui_config"] = function()
       require('dapui').open()
@@ -119,25 +119,25 @@ return {
     -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
     dap.configurations.java = {
       {
-        name = "Debug Launch (2GB)";
-        type = 'java';
-        request = 'launch';
+        name = "Debug Launch (2GB)",
+        type = 'java',
+        request = 'launch',
         vmArgs = "" ..
-          "-Xmx2g "
+            "-Xmx2g "
       },
       {
-        name = "Debug Attach (8000)";
-        type = 'java';
-        request = 'attach';
-        hostName = "127.0.0.1";
-        port = 8000;
+        name = "Debug Attach (8000)",
+        type = 'java',
+        request = 'attach',
+        hostName = "127.0.0.1",
+        port = 8000,
       },
       {
-        name = "Debug Attach (5005)";
-        type = 'java';
-        request = 'attach';
-        hostName = "127.0.0.1";
-        port = 5005;
+        name = "Debug Attach (5005)",
+        type = 'java',
+        request = 'attach',
+        hostName = "127.0.0.1",
+        port = 5005,
       },
       {
         name = "My Custom Java Run Configuration",
@@ -157,9 +157,8 @@ return {
         -- `nvim-jdtls` would automatically populate this property
         -- modulePaths = {},
         vmArgs = "" ..
-          "-Xmx2g "
+            "-Xmx2g "
       },
     }
   end
 }
-
