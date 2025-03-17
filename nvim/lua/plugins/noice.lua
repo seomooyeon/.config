@@ -16,7 +16,7 @@ return {
 					pattern = "^:",
 					icon = "🔱",
 					lang = "vim",
-					title = "Difficulties strengthen the mind, as labor does the body.",
+					title = "Command Line",
 				},
 				search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
 				search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
