@@ -104,10 +104,10 @@ return {
 		local keymap = vim.keymap
 		keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>")
 		keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+		keymap.set("n", "gr", "<cmd>lua require('fzf-lua').lsp_references()<CR>")
 		keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
 		keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 		keymap.set("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-		keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 		keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 		keymap.set("n", "rr", "<cmd>lua vim.lsp.buf.rename()<CR>")
 		keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
