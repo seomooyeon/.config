@@ -4,7 +4,6 @@ return {
 	opts = {
 		cmdline = {
 			enabled = true, -- enables the Noice cmdline UI
-			view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
 			opts = {}, -- global options for the cmdline. See section on views
 			format = {
 				-- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
@@ -31,6 +30,7 @@ return {
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 		"MunifTanjim/nui.nvim",
+		"ibhagwan/fzf-lua",
 		-- OPTIONAL:
 		--   `nvim-notify` is only needed, if you want to use the notification view.
 		--   If not available, we use `mini` as the fallback
