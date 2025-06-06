@@ -26,7 +26,7 @@ return {
 	dependencies = {
 		{
 			"mason-org/mason.nvim",
-			opts = { ensure_installed = { "prettier" } },
+			opts = { ensure_installed = { "prettier", "stylua" } },
 		},
 	},
 	config = function()
