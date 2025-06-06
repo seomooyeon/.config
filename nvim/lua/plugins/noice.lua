@@ -13,7 +13,7 @@ return {
 				-- title: set to anything or empty string to hide
 				cmdline = {
 					pattern = "^:",
-					icon = "🔱",
+					icon = "",
 					lang = "vim",
 					title = "Command Line",
 				},
