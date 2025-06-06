@@ -21,7 +21,8 @@ return {
 		"tpope/vim-commentary",
 		event = "VeryLazy",
 	},
-	"stevearc/conform.nvim",
+  {
+    	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{
@@ -48,4 +49,5 @@ return {
 			},
 		})
 	end,
+  }
 }
