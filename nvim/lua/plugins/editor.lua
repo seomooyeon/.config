@@ -1,4 +1,26 @@
+-- Comment/Uncomment Lines of Code
 return {
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {
+			check_ts = true, -- enable treesitter
+			ts_config = {
+				lua = { "string" }, -- don't add pairs in lua string treesitter nodes
+				javascript = { "template_string" }, -- don't add pairs in javascript template_string
+			},
+		},
+	},
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
+		"tpope/vim-commentary",
+		event = "VeryLazy",
+	},
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
