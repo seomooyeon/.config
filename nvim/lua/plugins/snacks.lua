@@ -5,36 +5,38 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"echasnovski/mini.icons",
 	},
-	priority = 1001,
+	priority = 1000,
 	lazy = false,
 	opts = {
 		bigfile = { enabled = true },
-		dashboard = { enabled = true },
-		explorer = { enabled = true },
 		indent = { enabled = true },
 		input = { enabled = true },
-		notifier = {
-			enabled = true,
-			timeout = 3000,
-			style = "compact",
-			top_down = true,
-		},
 		picker = {
 			enabled = true,
-			win = {
-				style = "rounded",
-				border = {
-					{ "╭", "SnacksPickerBorder" },
-					{ "─", "SnacksPickerBorder" },
-					{ "╮", "SnacksPickerBorder" },
-					{ "│", "SnacksPickerBorder" },
-					{ "╯", "SnacksPickerBorder" },
-					{ "─", "SnacksPickerBorder" },
-					{ "╰", "SnacksPickerBorder" },
-					{ "│", "SnacksPickerBorder" },
+			sources = {
+				explorer = {
+					auto_close = true,
+					layout = {
+						{ preview = true },
+						layout = {
+							box = "horizontal",
+							width = 0.8,
+							height = 0.8,
+							{
+								box = "vertical",
+								border = "rounded",
+								title = "{source} {live} {flags}",
+								title_pos = "center",
+								{ win = "input", height = 1, border = "bottom" },
+								{ win = "list", border = "none" },
+							},
+							{ win = "preview", border = "rounded", width = 0.7, title = "{preview}" },
+						},
+					},
 				},
 			},
 		},
+		explorer = { enabled = true },
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = true },
@@ -42,89 +44,60 @@ return {
 		words = { enabled = true },
 		styles = {
 			notification = {
-				wo = {
-					wrap = true,
-					winblend = 0,
-				},
-				border = {
-					{ "╭", "SnacksNotifierBorder" },
-					{ "─", "SnacksNotifierBorder" },
-					{ "╮", "SnacksNotifierBorder" },
-					{ "│", "SnacksNotifierBorder" },
-					{ "╯", "SnacksNotifierBorder" },
-					{ "─", "SnacksNotifierBorder" },
-					{ "╰", "SnacksNotifierBorder" },
-					{ "│", "SnacksNotifierBorder" },
-				},
-				title_pos = "center",
-				footer_pos = "center",
+				wo = { wrap = true }, -- Wrap notifications
 			},
-			input = {
-				border = {
-					{ "╭", "SnacksInputBorder" },
-					{ "─", "SnacksInputBorder" },
-					{ "╮", "SnacksInputBorder" },
-					{ "│", "SnacksInputBorder" },
-					{ "╯", "SnacksInputBorder" },
-					{ "─", "SnacksInputBorder" },
-					{ "╰", "SnacksInputBorder" },
-					{ "│", "SnacksInputBorder" },
-				},
-				title_pos = "center",
-			},
-			explorer = {
-				border = {
-					{ "╭", "SnacksExplorerBorder" },
-					{ "─", "SnacksExplorerBorder" },
-					{ "╮", "SnacksExplorerBorder" },
-					{ "│", "SnacksExplorerBorder" },
-					{ "╯", "SnacksExplorerBorder" },
-					{ "─", "SnacksExplorerBorder" },
-					{ "╰", "SnacksExplorerBorder" },
-					{ "│", "SnacksExplorerBorder" },
-				},
-			},
-			picker = {
-				border = {
-					{ "╭", "SnacksPickerBorder" },
-					{ "─", "SnacksPickerBorder" },
-					{ "╮", "SnacksPickerBorder" },
-					{ "│", "SnacksPickerBorder" },
-					{ "╯", "SnacksPickerBorder" },
-					{ "─", "SnacksPickerBorder" },
-					{ "╰", "SnacksPickerBorder" },
-					{ "│", "SnacksPickerBorder" },
-				},
-				backdrop = false,
-			},
-			terminal = {
-				border = {
-					{ "╭", "SnacksTerminalBorder" },
-					{ "─", "SnacksTerminalBorder" },
-					{ "╮", "SnacksTerminalBorder" },
-					{ "│", "SnacksTerminalBorder" },
-					{ "╯", "SnacksTerminalBorder" },
-					{ "─", "SnacksTerminalBorder" },
-					{ "╰", "SnacksTerminalBorder" },
-					{ "│", "SnacksTerminalBorder" },
-				},
-			},
-			lazygit = {
-				border = {
-					{ "╭", "SnacksLazygitBorder" },
-					{ "─", "SnacksLazygitBorder" },
-					{ "╮", "SnacksLazygitBorder" },
-					{ "│", "SnacksLazygitBorder" },
-					{ "╯", "SnacksLazygitBorder" },
-					{ "─", "SnacksLazygitBorder" },
-					{ "╰", "SnacksLazygitBorder" },
-					{ "│", "SnacksLazygitBorder" },
-				},
-			},
-			zen = {
-				backdrop = {
-					transparent = false,
-					bg = "#071009",
+		},
+		dashboard = {
+			enabled = true,
+			preset = {
+				header = [[
+      ,gg,                                                                
+     i8""8i    I8                                                         
+     `8,,8'    I8                                                         
+      `88'  88888888            gg                                        
+      dP"8,    I8               ""                                        
+     dP' `8a   I8     ,ggggg,   gg     ,gggg,                             
+    dP'   `Yb  I8    dP"  "Y8ggg88    dP"  "Yb                            
+_ ,dP'     I8 ,I8,  i8'    ,8I  88   i8'                                  
+"888,,____,dP,d88b,,d8,   ,d8'_,88,_,d8,_    _                            
+a8P"Y88888P" 8P""Y8P"Y8888P"  8P""Y8P""Y8888PP                            
+     ,gggg,                                                               
+   ,88"""Y8b,                                                        I8   
+  d8"     `Y8                                                        I8   
+ d8'   8b  d8                                                  gg 88888888
+,8I    "Y88P'                                                  ""    I8   
+I8'            ,ggggg,    ,ggg,,ggg,,ggg,   ,ggg,,ggg,,ggg,    gg    I8   
+d8            dP"  "Y8ggg,8" "8P" "8P" "8, ,8" "8P" "8P" "8,   88    I8   
+Y8,          i8'    ,8I  I8   8I   8I   8I I8   8I   8I   8I   88   ,I8,  
+`Yba,,_____,,d8,   ,d8' ,dP   8I   8I   Yb,dP   8I   8I   Yb,_,88,_,d88b, 
+  `"Y8888888P"Y8888P"   8P'   8I   8I   `Y8P'   8I   8I   `Y88P""Y88P""Y8 
+                                                                          
+                                                                          
+                                                                          
+                                                                          ]],
+				keys = {
+					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
+					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+					{
+						icon = " ",
+						key = "g",
+						action = ":lua Snacks.dashboard.pick('live_grep')",
+						desc = "Find Text",
+					},
+					{
+						icon = " ",
+						key = "r",
+						desc = "Recent Files",
+						action = ":lua Snacks.dashboard.pick('oldfiles')",
+					},
+					{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+					{
+						icon = " ",
+						key = "c",
+						desc = "Config",
+						action = ":lua Snacks.picker.files({ cwd = '~/.config/nvim/' })",
+					},
+					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 				},
 			},
 		},
@@ -597,215 +570,7 @@ return {
 			desc = "Prev Reference",
 			mode = { "n", "t" },
 		},
-		{
-			"<leader>N",
-			desc = "Neovim News",
-			function()
-				Snacks.win({
-					file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-					width = 0.6,
-					height = 0.6,
-					wo = {
-						spell = false,
-						wrap = false,
-						signcolumn = "yes",
-						statuscolumn = " ",
-						conceallevel = 3,
-					},
-				})
-			end,
-		},
 	},
-	config = function(_, opts)
-		require("snacks").setup(opts)
-
-		-- Define comprehensive dark green theme with orange accents (matching your catppuccin theme)
-		local highlights = {
-			-- Dashboard - keeping orange accents as requested
-			SnacksDashboardNormal = { bg = "#0a0f0a", fg = "#ffffff" },
-			SnacksDashboardHeader = { fg = "#ff8c42", bold = true }, -- Orange header
-			SnacksDashboardKey = { fg = "#ff8c42", bold = true }, -- Orange keys
-			SnacksDashboardDesc = { fg = "#ffffff" }, -- White descriptions
-			SnacksDashboardIcon = { fg = "#ff8c42" }, -- Orange icons
-			SnacksDashboardFooter = { fg = "#cccccc", italic = true },
-			SnacksDashboardTitle = { fg = "#ff8c42", bold = true }, -- Orange title
-			SnacksDashboardDir = { fg = "#66cc66" }, -- Green directories
-			SnacksDashboardSpecial = { fg = "#ffb366" }, -- Light orange special
-
-			-- Picker with light neon green borders
-			SnacksPickerNormal = { bg = "#0a0f0a", fg = "#ffffff" },
-			SnacksPickerBorder = { bg = "#0a0f0a", fg = "#00ff88" }, -- Light neon green borders
-			SnacksPickerTitle = { fg = "#00ff88", bold = true }, -- Light neon green title
-			SnacksPickerPrompt = { bg = "#101510", fg = "#ffffff" },
-			SnacksPickerPromptBorder = { bg = "#101510", fg = "#00ff88" }, -- Light neon green
-			SnacksPickerPreview = { bg = "#070a07", fg = "#ffffff" },
-			SnacksPickerPreviewBorder = { bg = "#070a07", fg = "#00ff88" }, -- Light neon green
-			SnacksPickerResults = { bg = "#0a0f0a", fg = "#ffffff" },
-			SnacksPickerResultsBorder = { bg = "#0a0f0a", fg = "#00ff88" }, -- Light neon green
-			SnacksPickerSelection = { bg = "#1a201a", fg = "#00ff88", bold = true },
-			SnacksPickerSelectionCaret = { fg = "#00ff88" },
-			SnacksPickerMultiSelection = { bg = "#151a15", fg = "#66dd77" },
-			SnacksPickerMatch = { fg = "#00ff88", bold = true }, -- Light neon green matches
-			SnacksPickerFile = { fg = "#ffffff" },
-			SnacksPickerDir = { fg = "#66cc66" }, -- Green directories
-			SnacksPickerPath = { fg = "#cccccc" },
-			SnacksPickerLine = { fg = "#77ee88" }, -- Medium green line numbers
-			SnacksPickerColumn = { fg = "#88ff99" }, -- Light green columns
-
-			-- Explorer with light neon green borders and darker green text
-			SnacksExplorerNormal = { bg = "#0a0f0a", fg = "#0a0f0a" },
-			SnacksExplorerBorder = { bg = "#0a0f0a", fg = "#00ff88" }, -- Light neon green borders
-			SnacksExplorerTitle = { fg = "#00ff88", bold = true }, -- Light neon green title
-			SnacksExplorerDir = { fg = "#44aa55", bold = true }, -- Darker green directories
-			SnacksExplorerFile = { fg = "#55bb66" }, -- Slightly darker green files
-			SnacksExplorerSymlink = { fg = "#66cc77" }, -- Medium green symlinks
-			SnacksExplorerExecutable = { fg = "#77dd88" }, -- Medium-light green executables
-			SnacksExplorerSelection = { bg = "#1a201a", fg = "#00ff88" },
-			SnacksExplorerCursor = { bg = "#151a15" },
-			SnacksExplorerHidden = { fg = "#333333" },
-			SnacksExplorerGitAdd = { fg = "#66cc66" }, -- Green for added files
-			SnacksExplorerGitChange = { fg = "#ffcc66" }, -- Yellow for changed files
-			SnacksExplorerGitDelete = { fg = "#ff6666" }, -- Red for deleted files
-			SnacksExplorerGitIgnore = { fg = "#666666" },
-			SnacksExplorerIndent = { fg = "#333333" },
-			SnacksExplorerFold = { fg = "#00ff88" }, -- Light neon green fold markers
-			SnacksExplorerRoot = { fg = "#00ff88", bold = true }, -- Light neon green root
-
-			-- Notifications with light neon green borders
-			SnacksNotifierNormal = { bg = "#0d120d", fg = "#ffffff" },
-			SnacksNotifierBorder = { bg = "#0d120d", fg = "#00ff88" }, -- Light neon green
-			SnacksNotifierTitle = { fg = "#00ff88", bold = true },
-			SnacksNotifierIcon = { fg = "#00ff88" },
-			SnacksNotifierIconInfo = { fg = "#00ff88" }, -- Light neon green info
-			SnacksNotifierIconWarn = { fg = "#ffcc66" }, -- Yellow warnings
-			SnacksNotifierIconError = { fg = "#ff6666" }, -- Red errors
-			SnacksNotifierIconDebug = { fg = "#cc99cc" }, -- Purple debug
-			SnacksNotifierIconTrace = { fg = "#ff99cc" }, -- Pink trace
-			SnacksNotifierFooter = { fg = "#cccccc", italic = true },
-			SnacksNotifierHistory = { bg = "#0a0f0a", fg = "#ffffff" },
-
-			-- Input with light neon green borders
-			SnacksInputNormal = { bg = "#0d120d", fg = "#ffffff" },
-			SnacksInputBorder = { bg = "#0d120d", fg = "#00ff88" }, -- Light neon green
-			SnacksInputTitle = { fg = "#00ff88", bold = true },
-			SnacksInputIcon = { fg = "#00ff88" },
-			SnacksInputPrompt = { fg = "#00ff88" },
-			SnacksInputCursor = { bg = "#00ff88", fg = "#0a0f0a" },
-
-			-- Terminal with light neon green borders
-			SnacksTerminalNormal = { bg = "#070a07", fg = "#ffffff" },
-			SnacksTerminalBorder = { bg = "#070a07", fg = "#00ff88" }, -- Light neon green
-			SnacksTerminalTitle = { fg = "#00ff88", bold = true },
-
-			-- Lazygit with light neon green borders
-			SnacksLazygitNormal = { bg = "#0a0f0a", fg = "#ffffff" },
-			SnacksLazygitBorder = { bg = "#0a0f0a", fg = "#00ff88" }, -- Light neon green
-			SnacksLazygitTitle = { fg = "#00ff88", bold = true },
-
-			-- Scratch with light neon green borders
-			SnacksScratchNormal = { bg = "#0a0f0a", fg = "#ffffff" },
-			SnacksScratchBorder = { bg = "#0a0f0a", fg = "#00ff88" }, -- Light neon green
-			SnacksScratchTitle = { fg = "#00ff88", bold = true },
-
-			-- Zen mode
-			SnacksZenNormal = { bg = "#0a0f0a", fg = "#ffffff" },
-			SnacksZenBackdrop = { bg = "#071009" },
-
-			-- Words (reference highlighting)
-			SnacksWordsBase = { bg = "#1a201a" },
-			SnacksWordsRead = { bg = "#151a15" },
-			SnacksWordsWrite = { bg = "#1a201a" },
-
-			-- Indent guides
-			SnacksIndent = { fg = "#333333" },
-			SnacksIndentScope = { fg = "#00ff88" }, -- Light neon green indent scope
-
-			-- Statuscolumn
-			SnacksStatuscolumnNormal = { bg = "#0a0f0a", fg = "#cccccc" },
-			SnacksStatuscolumnFolds = { fg = "#00ff88" }, -- Light neon green fold markers
-			SnacksStatuscolumnGitAdd = { fg = "#66cc66" },
-			SnacksStatuscolumnGitChange = { fg = "#ffcc66" },
-			SnacksStatuscolumnGitDelete = { fg = "#ff6666" },
-
-			-- Scroll
-			SnacksScrollNormal = { fg = "#00ff88" }, -- Light neon green scrollbar
-			SnacksScrollThumb = { bg = "#1a201a" },
-
-			-- Scope
-			SnacksScopeNormal = { fg = "#00ff88" }, -- Light neon green scope indicators
-
-			-- Quickfile with light neon green borders
-			SnacksQuickfileNormal = { bg = "#0a0f0a", fg = "#ffffff" },
-			SnacksQuickfileBorder = { bg = "#0a0f0a", fg = "#00ff88" }, -- Light neon green
-
-			-- Debug
-			SnacksDebugNormal = { bg = "#0d120d", fg = "#ffffff" },
-			SnacksDebugBorder = { bg = "#0d120d", fg = "#ff6666" },
-			SnacksDebugTitle = { fg = "#ff6666", bold = true },
-
-			-- Rename with light neon green borders
-			SnacksRenameNormal = { bg = "#0d120d", fg = "#ffffff" },
-			SnacksRenameBorder = { bg = "#0d120d", fg = "#00ff88" }, -- Light neon green
-			SnacksRenameTitle = { fg = "#00ff88", bold = true },
-
-			-- Dim (inactive windows)
-			SnacksDimNormal = { bg = "#070a07", fg = "#999999" },
-
-			-- Additional specific highlights for better theming
-			SnacksPickerIcon = { fg = "#00ff88" },
-			SnacksNotifierDetails = { fg = "#e6e6e6" },
-			SnacksPickerCount = { fg = "#77ee88" },
-			SnacksPickerSpinner = { fg = "#00ff88" },
-
-			-- Git-related highlights
-			SnacksGitAdd = { fg = "#66cc66" },
-			SnacksGitChange = { fg = "#ffcc66" },
-			SnacksGitDelete = { fg = "#ff6666" },
-			SnacksGitConflict = { fg = "#ff9966" },
-
-			-- LSP-related highlights
-			SnacksLspReference = { bg = "#1a201a" },
-			SnacksLspDefinition = { fg = "#00ff88", bold = true },
-			SnacksLspImplementation = { fg = "#77ee88" },
-			SnacksLspTypeDefinition = { fg = "#88ff99" },
-		}
-
-		-- Apply all highlight groups
-		for group, colors in pairs(highlights) do
-			vim.api.nvim_set_hl(0, group, colors)
-		end
-
-		-- Additional autocmds for consistent theming
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			pattern = "*",
-			callback = function()
-				-- Reapply highlights when colorscheme changes
-				for group, colors in pairs(highlights) do
-					vim.api.nvim_set_hl(0, group, colors)
-				end
-			end,
-		})
-
-		-- Custom autocmd for Snacks components
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "SnacksReady",
-			callback = function()
-				-- Ensure highlights are applied after Snacks is ready
-				for group, colors in pairs(highlights) do
-					vim.api.nvim_set_hl(0, group, colors)
-				end
-			end,
-		})
-
-		-- Additional theming for floating windows
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = { "snacks_picker", "snacks_explorer", "snacks_notifier" },
-			callback = function()
-				vim.opt_local.winblend = 0
-				vim.opt_local.winhighlight = "Normal:SnacksPickerNormal,FloatBorder:SnacksPickerBorder"
-			end,
-		})
-	end,
 	init = function()
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "VeryLazy",
