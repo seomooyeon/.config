@@ -90,7 +90,12 @@ Y8,          i8'    ,8I  I8   8I   8I   8I I8   8I   8I   8I   88   ,I8,
 						desc = "Recent Files",
 						action = ":lua Snacks.dashboard.pick('oldfiles')",
 					},
-					{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+					{ 
+            icon = " ", 
+            key = "s", 
+            desc = "Restore Session",
+            section = "session",
+          },
 					{
 						icon = " ",
 						key = "c",
