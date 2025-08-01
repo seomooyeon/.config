@@ -1,112 +1,86 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
--- vim.cmd("let g:netrw_liststyle = 3")
-
 local opt = vim.opt
 
-opt.relativenumber = true
+-- Line numbers
 opt.number = true
+opt.relativenumber = true
 
--- tabs & indentation
-opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 2 -- 2 spaces for indent width
-opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
+-- Tabs & indentation  
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.autoindent = true
 
-opt.wrap = false
+-- Search
+opt.ignorecase = true
+opt.smartcase = true
 
--- search settings
-opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
-
+-- UI
 opt.cursorline = true
-
--- turn on termguicolors for tokyonight colorscheme to work
--- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
-opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+opt.background = "dark"
+opt.signcolumn = "yes"
+opt.showmode = false
+opt.wrap = false
+opt.scrolloff = 10
 
--- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+-- Clipboard (WSL-friendly)
+if vim.fn.has("wsl") == 1 then
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = "clip.exe",
+			["*"] = "clip.exe",
+		},
+		paste = {
+			["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+			["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+		},
+		cache_enabled = 0,
+	}
+else
+	vim.schedule(function()
+		opt.clipboard = "unnamedplus"
+	end)
+end
 
--- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+-- Splits
+opt.splitright = true
+opt.splitbelow = true
 
--- split windows
-opt.splitright = true -- split vertical window to the right
-opt.splitbelow = true -- split horizontal window to the bottom
+-- Files
+opt.swapfile = false
+opt.undofile = true
 
--- turn off swapfile
-opt.swapfile = true
+-- Timing
+opt.updatetime = 250
+opt.timeoutlen = 300
 
-vim.opt.swapfile = false
+-- Whitespace display
+opt.list = true
+opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
--- [[ Setting options ]]
--- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+-- Other
+opt.mouse = "a"
+opt.breakindent = true
+opt.inccommand = "split"
 
--- Make line numbers default
-vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
-vim.opt.relativenumber = true
+-- Better completion
+opt.completeopt = { "menuone", "noselect", "noinsert" }
+opt.pumheight = 10 -- Popup menu height
 
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = "a"
+-- Better search
+opt.hlsearch = true -- Highlight search results
+opt.incsearch = true -- Show search results as you type
 
--- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+-- Better editing
+opt.virtualedit = "block" -- Allow cursor to move anywhere in visual block mode
+opt.whichwrap = "bs<>[]hl" -- Allow backspace and cursor keys to cross line boundaries
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
-end)
-
--- Enable break indent
-vim.opt.breakindent = true
-
--- Save undo history
-vim.opt.undofile = true
-
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
--- Keep signcolumn on by default
-vim.opt.signcolumn = "yes"
-
--- Decrease update time
-vim.opt.updatetime = 250
-
--- Decrease mapped sequence wait time
-vim.opt.timeoutlen = 300
-
--- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
--- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
-
--- Preview substitutions live, as you type!
-vim.opt.inccommand = "split"
-
--- Show which line your cursor is on
-vim.opt.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
-
--- set to `true` to follow the main branch
--- you need to have a working rust toolchain to build the plugin
--- in this case.
-vim.g.lazyvim_blink_main = false
+-- Performance optimizations (especially for WSL)
+opt.lazyredraw = false -- Don't redraw during macros (can cause issues in WSL)
+opt.synmaxcol = 300 -- Limit syntax highlighting for long lines
+opt.foldmethod = "manual" -- Manual folding for better performance
+if vim.fn.has("wsl") == 1 then
+	opt.ttimeoutlen = 50 -- Faster key sequence timeout in WSL
+	opt.ttyfast = true -- Assume fast terminal connection
+end

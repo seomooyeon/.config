@@ -36,16 +36,20 @@ return {
 			conform.setup({
 				formatters_by_ft = {
 					javascript = { "prettier" },
+					typescript = { "prettier" },
+					javascriptreact = { "prettier" },
+					typescriptreact = { "prettier" },
 					css = { "prettier" },
 					scss = { "prettier" },
 					html = { "prettier" },
 					json = { "prettier" },
 					lua = { "stylua" },
+					python = { "black" },
 				},
 				format_on_save = {
 					lsp_fallback = true,
 					async = false,
-					timeout_ms = 3000,
+					timeout_ms = vim.fn.has("wsl") == 1 and 5000 or 3000, -- Longer timeout for WSL
 				},
 			})
 		end,

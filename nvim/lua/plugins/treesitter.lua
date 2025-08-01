@@ -11,12 +11,30 @@ return {
   opts = {
     highlight = {
       enable = true,
+      additional_vim_regex_highlighting = false, -- Disable for performance
     },
     indent = { enable = true },
-    auto_install = true, -- automatically install syntax support when entering new file type buffer
+    auto_install = not vim.fn.has("wsl"), -- Disable auto-install in WSL for better performance
     ensure_installed = {
       'lua',
-      'comment',
+      'javascript',
+      'typescript',
+      'python',
+      'json',
+      'html',
+      'css',
+      'vim',
+      'vimdoc',
+      'query',
+    },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+      },
     },
   },
   config = function (_, opts)
