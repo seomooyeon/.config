@@ -20,6 +20,3 @@ keymap.set("n", "<leader>4", ":tabn 4<cr>")
 keymap.set("n", "<leader>5", ":tabn 5<cr>")
 
 -- Harpoon keymaps are now configured in lua/plugins/harpoon.lua
--- Copilot
-vim.api.nvim_set_keymap("i", "<m-CR>", 'copilot#Accept("<CR>")', { expr = true, noremap = true, silent = true })
-vim.g.copilot_no_tab_map = true
